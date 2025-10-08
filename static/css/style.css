@@ -1,0 +1,248 @@
+/* Global Styles */
+body {
+    background-color: #0D0628; /* Deep Indigo/Violet */
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    color: #F0F8FF; /* Alice Blue - a softer white */
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+    /* Added subtle global perspective for a hint of 3D */
+    perspective: 1000px;
+}
+
+/* Navbar Styling */
+.navbar {
+    /* Slightly more opaque for prominence */
+    background-color: rgba(13, 6, 40, 0.9);
+    border-bottom: 2px solid rgba(0, 255, 255, 0.4);
+    /* Smoother, custom transition */
+    transition: background-color 0.6s cubic-bezier(0.23, 1, 0.32, 1), transform 0.6s ease;
+    padding: 10px 15px;
+    /* Lifted subtly in 3D space */
+    transform: translateZ(0);
+}
+
+.navbar.scrolled {
+    background-color: rgba(13, 6, 40, 0.98); /* Near opaque when scrolled */
+    padding: 10px 15px;
+    /* Lifted slightly more when scrolled to "stick out" */
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.8), 0 0 10px rgba(0, 255, 255, 0.3);
+    transform: translateZ(10px);
+}
+
+.navbar-brand {
+    color: #00FFFF;
+    font-weight: 700;
+    font-size: 1.8rem;
+    text-shadow: 0 0 15px rgba(0, 255, 255, 0.8); /* Stronger glow */
+}
+
+.navbar-nav .nav-link {
+    color: #F0F8FF;
+    font-weight: 500;
+    /* Custom, snappy transition for hover */
+    transition: color 0.3s cubic-bezier(0.7, 0, 0.84, 0), text-shadow 0.3s cubic-bezier(0.7, 0, 0.84, 0);
+}
+
+.navbar-nav .nav-link:hover {
+    color: #00FFFF;
+    text-shadow: 0 0 8px rgba(0, 255, 255, 0.8);
+    /* Subtle 3D tilt on hover */
+    transform: translateY(-2px);
+}
+
+/* Hero Section */
+.hero-section {
+    /* ... (rest remains the same) ... */
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.hero-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    /* Dramatic, subtle vignette/radial gradient for depth */
+    background: radial-gradient(circle at center, rgba(13, 6, 40, 0.1) 0%, rgba(13, 6, 40, 0.8) 100%);
+    z-index: -1;
+}
+
+.hero-section h1 {
+    font-size: 3.5rem;
+    font-weight: 800;
+    color: #F0F8FF;
+    letter-spacing: 3px;
+    /* More pronounced 3D text effect */
+    text-shadow: 0 0 30px rgba(0, 255, 255, 0.9), 4px 4px 10px rgba(0, 0, 0, 0.9);
+}
+
+.hero-section .btn-hero {
+    margin-top: 40px;
+    padding: 18px 40px;
+    font-size: 1.6rem;
+    background-color: #00FFFF;
+    color: #0D0628;
+    font-weight: 700;
+    border-radius: 50px;
+    /* Advanced transition for multiple properties */
+    transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+    /* Multiple shadows for depth and glow */
+    box-shadow: 0 0 25px rgba(0, 255, 255, 0.5), 0 10px 40px rgba(0, 0, 0, 0.7);
+    transform: translateZ(0); /* Establish 3D context */
+}
+
+.hero-section .btn-hero:hover {
+    background-color: #00E5E5;
+    /* Dramatic 3D lift and rotation */
+    transform: translateY(-10px) rotateX(5deg) translateZ(20px);
+    /* More intense hover glow */
+    box-shadow: 0 0 45px rgba(0, 255, 255, 1), 0 20px 50px rgba(0, 0, 0, 0.9);
+}
+
+/* Animations (Adjusted for smoother, bouncier feel) */
+@keyframes fadeInDown {
+    from { opacity: 0; transform: translateY(-70px) translateZ(50px); }
+    to { opacity: 1; transform: translateY(0) translateZ(0); }
+}
+
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(70px) translateZ(50px); }
+    to { opacity: 1; transform: translateY(0) translateZ(0); }
+}
+
+@keyframes popUp {
+    from { transform: scale(0.9) translateZ(-100px); opacity: 0; }
+    to { transform: scale(1) translateZ(0); opacity: 1; }
+}
+
+/* Container Styling */
+.container {
+    background: rgba(13, 6, 40, 0.75);
+    /* Essential for modern depth effect */
+    backdrop-filter: blur(10px) brightness(1.1);
+    -webkit-backdrop-filter: blur(10px) brightness(1.1);
+    padding: 60px 50px;
+    border-radius: 25px; /* Softer, modern rounding */
+    /* Layered shadows for depth and a soft glow outline */
+    box-shadow: 0 30px 60px -12px rgba(0, 0, 0, 0.9), 0 0 50px rgba(0, 255, 255, 0.3);
+    margin-top: 50px;
+    /* Custom, bouncier animation */
+    animation: popUp 1.2s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards;
+    transform-style: preserve-3d; /* Allows child elements to be 3D */
+}
+
+/* Heading Styling */
+h1 {
+    font-size: 3rem;
+    font-weight: 800;
+    color: #00FFFF;
+    letter-spacing: 3px;
+    text-shadow: 0 0 15px rgba(0, 255, 255, 0.6);
+    /* Slight 3D tilt to all headings */
+    transform: rotateX(2deg);
+    transition: all 0.4s ease-in-out;
+}
+
+/* Button Styling */
+.btn-primary {
+    background-color: #00FFFF;
+    border: 3px solid #00FFFF; /* Thicker border */
+    color: #0D0628;
+    font-weight: 700;
+    font-size: 1.6rem;
+    /* Advanced transition for all interactive properties */
+    transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+    padding: 15px 35px;
+    border-radius: 50px;
+    transform: translateZ(0);
+}
+
+.btn-primary:hover {
+    background-color: #0D0628;
+    border-color: #00FFFF;
+    color: #00FFFF;
+    /* More dramatic, angled lift on hover */
+    transform: translateY(-8px) rotateX(10deg);
+    /* Powerful hover glow */
+    box-shadow: 0 15px 40px rgba(0, 255, 255, 0.8), 0 0 10px rgba(0, 255, 255, 0.4) inset;
+}
+
+/* Form Input Styling */
+.form-control {
+    background-color: rgba(0, 255, 255, 0.05); /* Very subtle background */
+    border: 1px solid rgba(0, 255, 255, 0.3);
+    color: #F0F8FF;
+    transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+    border-radius: 12px;
+    padding: 18px 20px; /* Taller inputs */
+    margin-bottom: 25px;
+    /* Subtle inner shadow for a recessed look */
+    box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.5);
+}
+
+.form-control:focus {
+    background-color: rgba(0, 255, 255, 0.02);
+    border-color: #00FFFF;
+    /* Intense outer glow */
+    box-shadow: 0 0 18px rgba(0, 255, 255, 0.9), inset 0 2px 5px rgba(0, 0, 0, 0.8);
+    outline: none;
+    /* Subtle scale up on focus */
+    transform: scale(1.005);
+}
+
+/* Alert Styling */
+.alert {
+    background-color: rgba(0, 255, 255, 0.1);
+    border: 2px solid #00FFFF;
+    color: #F0F8FF;
+    font-size: 1.5rem;
+    font-weight: 500;
+    padding: 20px;
+    border-radius: 15px;
+    animation: fadeIn 0.8s ease-in-out;
+    /* Prominent alert glow */
+    box-shadow: 0 0 25px rgba(0, 255, 255, 0.4), inset 0 0 10px rgba(0, 255, 255, 0.2);
+}
+
+/* Footer Styling */
+footer {
+    padding: 40px 0;
+    background-color: rgba(0, 0, 0, 0.7);
+    border-top: 2px solid rgba(0, 255, 255, 0.3);
+    box-shadow: 0 -5px 20px rgba(0, 0, 0, 0.5); /* Shadow for separation */
+}
+
+footer a {
+    color: #00FFFF;
+    font-weight: 600;
+    transition: color 0.4s ease, text-shadow 0.4s ease;
+}
+
+footer a:hover {
+    color: #00E5E5;
+    text-shadow: 0 0 8px rgba(0, 255, 255, 1);
+    /* Subtle 3D-like text movement */
+    transform: translateY(-1px);
+}
+
+/* Responsive Styling */
+@media (max-width: 768px) {
+    /* Reduced 3D effects on smaller screens for performance and clarity */
+    .container {
+        padding: 40px 20px;
+        backdrop-filter: blur(5px);
+        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.8);
+        animation: popUp 1s ease forwards; /* simpler animation */
+    }
+
+    .hero-section .btn-hero:hover {
+        transform: translateY(-5px) scale(1.05); /* simpler hover */
+    }
+}
